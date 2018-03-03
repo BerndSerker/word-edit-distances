@@ -10,7 +10,7 @@ WordSplitter::WordSplitter() {
 
 
 WordInfix* WordSplitter::split(string word, int bound) {
-	if (bound <= word.length() && bound > 0) {
+	if (bound < word.length() && bound > 0) {
 		WordInfix* infix = new WordInfix(word, bound, nullptr, normal);
 
 		//split the infix until bound + 1 leaves are created
@@ -64,7 +64,7 @@ vector<string> WordSplitter::halfInfix(string infix) {
 	vector<string> infixes;
 
 	if (infix.length() > 1) {
-		int half = infix.length() / 2 + (infix.length() % 2);
+		size_t half = infix.length() / 2 + (infix.length() % 2);
 
 		infixes.push_back(infix.substr(0, half));
 		infixes.push_back(infix.substr(half, infix.length()));

@@ -148,19 +148,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="HammingDistance.h" />
+    <ClInclude Include="LevenshteinDistance.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="WordEditDistance.h" />
+    <ClInclude Include="WordEditMatrix.h" />
     <ClInclude Include="WordInfix.h" />
     <ClInclude Include="WordSplitter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FastStringSimilaritySearch.cpp" />
+    <ClCompile Include="HammingDistance.cpp" />
+    <ClCompile Include="LevenshteinDistance.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="WordEditMatrix.cpp" />
     <ClCompile Include="WordInfix.cpp" />
     <ClCompile Include="WordSplitter.cpp" />
   </ItemGroup>
