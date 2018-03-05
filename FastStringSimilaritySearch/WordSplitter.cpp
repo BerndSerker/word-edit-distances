@@ -5,20 +5,18 @@
 #include <algorithm>
 using namespace std;
 
-WordSplitter::WordSplitter() {
-}
+WordSplitter::WordSplitter() {}
 
-
-WordInfix* WordSplitter::split(string word, int bound) {
+WordInfix WordSplitter::split(string word, int bound) {
 	if (bound < word.length() && bound > 0) {
 		WordInfix* infix = new WordInfix(word, bound, nullptr, normal);
 
 		//split the infix until bound + 1 leaves are created
 		this->splitInfix(word, bound, infix);
 
-		return infix;
+		return *infix;
 	}
-	return new WordInfix(word);
+	return WordInfix(word, bound, nullptr, normal);
 }
 
 bool WordSplitter::isEven(int bound) {
@@ -71,6 +69,7 @@ vector<string> WordSplitter::halfInfix(string infix) {
 	}
 	else {
 		infixes.push_back(infix);
+
 	}
 
 	return infixes;

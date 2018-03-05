@@ -4,14 +4,14 @@
 #include <string>
 using namespace std;
 
-/*
-* Object holding an infix of a word
-*/
 WordInfix::WordInfix(string infix) {
 	this->infix = infix;
+	this->bound = 0;
+	this->parent = nullptr;
+	this->filter = Filter::normal;
 }
 
-WordInfix::WordInfix(string infix, int bound, WordInfix *parent, Filter filter) {
+WordInfix::WordInfix(string infix, int bound, WordInfix* parent, Filter filter) {
 	this->infix = infix;
 	this->bound = bound;
 	this->parent = parent;
@@ -26,24 +26,36 @@ int WordInfix::getBound() {
 	return bound;
 }
 
-WordInfix * WordInfix::getParent() {
-	return parent;
+WordInfix WordInfix::getParent() {
+	return *parent;
 }
 
-list<WordInfix*> WordInfix::getChildren() {
+vector<WordInfix*> WordInfix::getChildren() {
 	return children;
 }
 
-void WordInfix::addChild(WordInfix * child) {
+bool WordInfix::isLeaf() {
+	return this->getChildren().empty();
+}
+
+void WordInfix::addChild(WordInfix* child) {
 	this->children.push_back(child);
 }
 
 string WordInfix::print() {
-	string bnd = to_string(this->getBound());
-	string prnt = "Infix '" + this->getInfix() + "', bound "+bnd+", Filter: "+to_string(this->filter)+"\n";
+	string prnt = "";
 
-	for (WordInfix* infix : this->getChildren()) {
-		prnt += infix->print();
+	try {
+		string bnd = to_string(this->getBound());
+		string infix = this->getInfix();
+		prnt = "Infix '" + infix + "', bound " + bnd + ", Filter: " + to_string(this->filter) + "\n";
+
+		for (WordInfix* infix : this->getChildren()) {
+			prnt += infix->print();
+		}
+
+	}catch (const std::exception& e) {
+		cout << e.what();
 	}
 
 	return prnt;

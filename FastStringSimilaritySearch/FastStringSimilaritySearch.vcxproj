@@ -148,7 +148,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="FuzzySearchResult.h" />
     <ClInclude Include="HammingDistance.h" />
+    <ClInclude Include="InfixTreeSearcher.h" />
     <ClInclude Include="LevenshteinDistance.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -159,7 +161,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FastStringSimilaritySearch.cpp" />
+    <ClCompile Include="FuzzySearchResult.cpp" />
     <ClCompile Include="HammingDistance.cpp" />
+    <ClCompile Include="InfixTreeSearcher.cpp" />
     <ClCompile Include="LevenshteinDistance.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

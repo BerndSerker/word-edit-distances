@@ -39,6 +39,12 @@
     <ClInclude Include="WordEditMatrix.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="InfixTreeSearcher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FuzzySearchResult.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -60,6 +66,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="WordEditMatrix.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InfixTreeSearcher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FuzzySearchResult.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

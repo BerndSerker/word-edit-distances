@@ -8,7 +8,7 @@ using namespace std;
 class WordSplitter{
 public:
 	WordSplitter();
-	WordInfix* split(string word, int bound);
+	WordInfix split(string word, int bound);
 
 private:
 	void splitInfix(string infix, int bound, WordInfix *parent);
