@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "WordEditMatrix.h"
 #include <string> 
+#include <iostream>
+using namespace std;
 
 void WordEditMatrix::initialize(size_t maxLength, size_t maxHeight) {
 	this->matrix = vector<vector<size_t>>();
@@ -14,18 +16,34 @@ void WordEditMatrix::initialize(size_t maxLength, size_t maxHeight) {
 
 		this->matrix.push_back(row);
 	}
+
+	this->maxHeight = matrix.size();
+	this->maxWidth = matrix[0].size();
 }
 
 void WordEditMatrix::update(size_t newMaxLength, size_t newMaxHeight) {
-	for (size_t i = this->matrix.size(); i < newMaxHeight; i++) {
-		vector<size_t> row = vector<size_t>();
 
-		for (size_t j = this->matrix[0].size(); j < newMaxLength; j++) {
+	//add rows
+	for (size_t i = this->matrix.size(); i < newMaxHeight; i++) {
+
+		vector<size_t> row = vector<size_t>();
+		this->matrix.push_back(row);
+	}
+
+	//add columns
+	for (int y = 0; y < this->matrix.size(); y++) {
+		vector<size_t> row = this->matrix[y];
+
+		for (size_t j = row.size(); j < newMaxLength; j++) {
 			row.push_back(0);
 		}
 
-		this->matrix.push_back(row);
+		this->matrix[y] = row;
+
 	}
+
+	this->maxHeight = matrix.size();
+	this->maxWidth = matrix[0].size();
 }
 
 size_t WordEditMatrix::getCostAt(size_t x, size_t y){
@@ -37,9 +55,8 @@ void WordEditMatrix::setCostAt(size_t x, size_t y, size_t cost) {
 }
 
 size_t WordEditMatrix::getTotalCost() {
-	// minus two TODO
-	size_t max_y = matrix.size()-2;
-	size_t max_x = matrix[0].size()-2;
+	size_t max_y = this->maxHeight-2;
+	size_t max_x = this->maxWidth-2;
 
 	return this->getCostAt(max_x, max_y);
 }

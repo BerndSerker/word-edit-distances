@@ -7,4 +7,19 @@ FuzzySearchResult::FuzzySearchResult(int distance, string word){
 	this->word = word;
 }
 
+bool FuzzySearchResult::operator>(FuzzySearchResult result) {
+	return this->getDistance() < result.getDistance();
+}
+
+bool FuzzySearchResult::operator<(FuzzySearchResult result) {
+	return this->getDistance() > result.getDistance();
+}
+
+string FuzzySearchResult::getWord() {
+	return this->word;
+}
+
+int FuzzySearchResult::getDistance() {
+	return this->distance;
+}
 

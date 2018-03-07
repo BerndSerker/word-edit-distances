@@ -2,6 +2,8 @@
 #include "InfixTreeSearcher.h"
 #include "FuzzySearchResult.h"
 #include <iostream>
+#include <algorithm>
+using namespace std;
 
 vector<string> InfixTreeSearcher::search(WordInfix* root, size_t maxResults) {
 	vector<string> results;
@@ -25,7 +27,14 @@ vector<string> InfixTreeSearcher::search(WordInfix* root, size_t maxResults) {
 vector<string> InfixTreeSearcher::rankAndCompact(vector<FuzzySearchResult> fuzzyResults, size_t maxResults) {
 	vector<string> results = vector<string>();
 
+	//rank results using < operator
+	sort(fuzzyResults.begin(),fuzzyResults.end());
 
+	//add words to the list until maximum is reached
+	for (int i = 0; i < fuzzyResults.size() && i < maxResults; i++) {
+		FuzzySearchResult result = fuzzyResults.at(i);
+		results.push_back(result.getWord());
+	}
 
 	return results;
 }

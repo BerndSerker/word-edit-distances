@@ -11,6 +11,9 @@ public:
 
 	size_t maxWidth;
 
+	string stringA = "";
+	string stringB = "";
+
 	bool initialized = false;
 
 	void initialize(size_t maxLength, size_t maxHeight);

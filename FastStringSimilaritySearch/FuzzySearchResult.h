@@ -9,5 +9,13 @@ private:
 
 public:
 	FuzzySearchResult(int distance, string word);
+
+	bool operator>(FuzzySearchResult result);
+
+	bool operator<(FuzzySearchResult result);
+
+	string getWord();
+
+	int getDistance();
 };
 
